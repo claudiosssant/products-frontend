@@ -23,7 +23,7 @@ const ProductsTable = () => {
             <TableCell>4572358</TableCell>
             <TableCell>Produto 1</TableCell>
             <TableCell>R$150</TableCell>
-            <TableCell>Uma porra</TableCell>
+            <TableCell>Descrição</TableCell>
             <TableCell>15/07/2024</TableCell>
           </TableRow>
         </TableBody>

@@ -46,7 +46,7 @@ const NewProduct = () => {
                 ></input>
               </div>
               <DialogFooter>
-                <Button type="button" variant="destructive">
+                <Button type="button" variant="outline">
                   Cancelar
                 </Button>
                 <Button type="submit">Cadastrar</Button>

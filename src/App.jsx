@@ -1,5 +1,6 @@
 import NewProduct from "./components/cadastrar-produto"
 import EditProduct from "./components/editar-produto"
+import DeleteProduct from "./components/excluir-produto"
 import ProductsTable from "./components/tabela-produtos"
 
 
@@ -12,9 +13,10 @@ function App() {
           Meus produtos 🥊
         </h1>
         <ProductsTable />
-        <div>
+        <div className="flex justify-between">
           <NewProduct />
           <EditProduct />
+          <DeleteProduct />
         </div>
       </div>
     </main>
