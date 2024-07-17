@@ -1,3 +1,4 @@
+import ProductsTable from "./components/tabela-produtos"
 
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
         <h1 className="text-3xl font-bold text-center">
           Meus produtos 🥊
         </h1>
+        <ProductsTable />
       </div>
     </main>
   )
