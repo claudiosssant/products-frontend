@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -7,27 +7,36 @@ import {
   TableHeader,
   TableRow,
 } from "./ui/table";
-import api from '../api';
-
+import api from "../api";
 
 const ProductsTable = () => {
-  const [data, setData] = useState([]);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    api.get('http://localhost:2000/produtos')
-      .then(response => {
-        setData(response.data);
-        setLoading(false);
+    let isMounted = true;
+
+    api
+      .get("produtos")
+      .then((response) => {
+        if (isMounted) {
+          console.log(response);
+          setProducts(response.data);
+          setLoading(false);
+        }
       })
-      .catch(error => {
-        console.error('Fetch não concluido', error);
+      .catch((error) => {
+        console.error("Fetch não concluido", error);
         setLoading(false);
       });
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
-  if(loading) {
-    return <div>Carregando...</div>
+  if (loading) {
+    return <div>Carregando...</div>;
   }
 
   return (
@@ -41,15 +50,15 @@ const ProductsTable = () => {
           <TableHead className="text-white">Data de cadastro</TableHead>
         </TableHeader>
         <TableBody>
-        {data.map(item => (
-          <TableRow key={item.index}>
-            <TableCell>{item.id}</TableCell>
-            <TableCell>{item.name}</TableCell>
-            <TableCell>{item.price}</TableCell>
-            <TableCell>{item.description}</TableCell>
-            <TableCell>{item.price}</TableCell>
-          </TableRow>
-        ))}
+          {products?.map((item, index) => (
+            <TableRow key={String(item.id + index)}>
+              <TableCell>{item.id}</TableCell>
+              <TableCell>{item.name}</TableCell>
+              <TableCell>{item.price}</TableCell>
+              <TableCell>{item.description}</TableCell>
+              <TableCell>{item.price}</TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </div>

@@ -1,4 +1,4 @@
-import { Pencil1Icon} from "@radix-ui/react-icons";
+import { Pencil1Icon } from "@radix-ui/react-icons";
 import { Button } from "./ui/button";
 import {
   Dialog,
@@ -15,7 +15,7 @@ const DeleteProduct = () => {
       <Dialog>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Editar produto</DialogTitle>
+            <DialogTitle>Excluir produto</DialogTitle>
             <form className="space-y-6">
               <div className="grid grid-cols-4 items-center text-right gap-3">
                 <input
@@ -28,7 +28,9 @@ const DeleteProduct = () => {
                 <Button type="button" variant="outline">
                   Cancelar
                 </Button>
-                <Button type="submit" variant="destructive">Deletar</Button>
+                <Button type="submit" variant="destructive">
+                  Deletar
+                </Button>
               </DialogFooter>
             </form>
           </DialogHeader>
