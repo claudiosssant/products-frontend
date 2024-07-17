@@ -1,3 +1,4 @@
+import NewProduct from "./components/cadastrar-produto"
 import ProductsTable from "./components/tabela-produtos"
 
 
@@ -10,6 +11,10 @@ function App() {
           Meus produtos 🥊
         </h1>
         <ProductsTable />
+        <div>
+          <NewProduct />
+          
+        </div>
       </div>
     </main>
   )
