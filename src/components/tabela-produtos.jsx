@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   Table,
   TableBody,
@@ -6,8 +7,29 @@ import {
   TableHeader,
   TableRow,
 } from "./ui/table";
+import api from '../api';
+
 
 const ProductsTable = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    api.get('http://localhost:2000/produtos')
+      .then(response => {
+        setData(response.data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Fetch não concluido', error);
+        setLoading(false);
+      });
+  }, []);
+
+  if(loading) {
+    return <div>Carregando...</div>
+  }
+
   return (
     <div className="border rounded-lg flex justify-evenly shadow-lg bg-slate-50">
       <Table>
@@ -19,13 +41,15 @@ const ProductsTable = () => {
           <TableHead className="text-white">Data de cadastro</TableHead>
         </TableHeader>
         <TableBody>
-          <TableRow>
-            <TableCell>4572358</TableCell>
-            <TableCell>Produto 1</TableCell>
-            <TableCell>R$150</TableCell>
-            <TableCell>Descrição</TableCell>
-            <TableCell>15/07/2024</TableCell>
+        {data.map(item => (
+          <TableRow key={item.index}>
+            <TableCell>{item.id}</TableCell>
+            <TableCell>{item.name}</TableCell>
+            <TableCell>{item.price}</TableCell>
+            <TableCell>{item.description}</TableCell>
+            <TableCell>{item.price}</TableCell>
           </TableRow>
+        ))}
         </TableBody>
       </Table>
     </div>
