@@ -1,4 +1,5 @@
 import NewProduct from "./components/cadastrar-produto"
+import EditProduct from "./components/editar-produto"
 import ProductsTable from "./components/tabela-produtos"
 
 
@@ -13,7 +14,7 @@ function App() {
         <ProductsTable />
         <div>
           <NewProduct />
-          
+          <EditProduct />
         </div>
       </div>
     </main>
