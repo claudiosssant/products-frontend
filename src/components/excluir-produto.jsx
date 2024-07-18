@@ -1,47 +1,56 @@
-import { Pencil1Icon } from "@radix-ui/react-icons";
+import api from "../api";
 import { Button } from "./ui/button";
 import {
-  Dialog,
+  DialogClose,
   DialogContent,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "./ui/dialog";
+import { Label } from "./ui/label";
 
-const DeleteProduct = () => {
+const DeleteProduct = ({ item }) => {
+  async function handleDelete() {
+    await api
+      .delete(`produtos/${item.id}`)
+      .then((response) => {
+        if (response.status == 200) {
+          alert(response.data.message);
+        } else {
+          alert("Tem algo errado!");
+        }
+      })
+      .catch(() => {
+        alert("o Produto não existe!");
+      });
+  }
+
   return (
     <div>
-      <Dialog>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Excluir produto</DialogTitle>
-            <form className="space-y-6">
-              <div className="grid grid-cols-4 items-center text-right gap-3">
-                <input
-                  placeholder="ID do produto a ser excluído"
-                  className="col-span-3 text-sm p-3"
-                  id="id"
-                ></input>
-              </div>
-              <DialogFooter>
-                <Button type="button" variant="outline">
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Excluir produto</DialogTitle>
+          <form className="space-y-6">
+            <div className="">
+              <Label>{`Você tem certeza que quer excluir o produto ${item.name}?`}</Label>
+            </div>
+            <DialogFooter>
+              <DialogClose asChild>
+                <Button type="button" variant="secondary">
                   Cancelar
                 </Button>
-                <Button type="submit" variant="destructive">
-                  Deletar
-                </Button>
-              </DialogFooter>
-            </form>
-          </DialogHeader>
-        </DialogContent>
-        <DialogTrigger asChild>
-          <Button className="bg-green-900">
-            <Pencil1Icon className="w-4 h-4 mr-2" />
-            Excluir produto
-          </Button>
-        </DialogTrigger>
-      </Dialog>
+              </DialogClose>
+              <Button
+                onClick={handleDelete}
+                type="submit"
+                variant="destructive"
+              >
+                Deletar
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogHeader>
+      </DialogContent>
     </div>
   );
 };
