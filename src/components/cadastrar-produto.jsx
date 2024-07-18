@@ -31,7 +31,7 @@ const NewProduct = () => {
         }
       })
       .catch(() => {
-        alert("O Produto não existe!");
+        alert("Erro ao cadastrar produto!");
       });
   }
 

@@ -2,6 +2,7 @@ import NewProduct from "./components/cadastrar-produto";
 import ProductsTable from "./components/tabela-produtos";
 
 function App() {
+  
   return (
     <main className="bg-green-50 h-screen">
       <div className="p-6 max-w-6xl mx-auto space-y-5">

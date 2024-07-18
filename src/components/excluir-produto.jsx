@@ -17,11 +17,11 @@ const DeleteProduct = ({ item }) => {
         if (response.status == 200) {
           alert(response.data.message);
         } else {
-          alert("Tem algo errado!");
+          alert("Não foi possível excluir o produto!");
         }
       })
       .catch(() => {
-        alert("o Produto não existe!");
+        alert("Erro ao excluir produto!");
       });
   }
 

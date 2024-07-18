@@ -24,13 +24,12 @@ const ProductsTable = () => {
       .get("produtos")
       .then((response) => {
         if (isMounted) {
-          console.log(response);
           setProducts(response.data);
           setLoading(false);
         }
       })
-      .catch((error) => {
-        console.error("Fetch não concluido", error);
+      .catch(() => {
+        alert("Produtos não encontrados!");
         setLoading(false);
       });
 

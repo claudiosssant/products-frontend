@@ -24,11 +24,11 @@ const ContentEdit = ({ item }) => {
         if (response.status == 200) {
           alert(response.data.message);
         } else {
-          alert("deu errado!");
+          alert("O produto não foi editado!");
         }
       })
       .catch(() => {
-        alert("o Produto não existe!");
+        alert("Não foi possível editar o produto!");
       });
   }
   return (
