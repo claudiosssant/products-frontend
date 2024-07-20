@@ -70,7 +70,7 @@ const ProductsTable = () => {
                 {item.description}
               </TableCell>
               <TableCell className="text-[10px] w-[256px]">
-                {item.data}
+                {item.date}
               </TableCell>
 
               <TableCell>
